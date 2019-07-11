@@ -1,25 +1,59 @@
-url = "https://exceed.superposition.pknn.dev/data/15"
+const url = "https://exceed.superposition.pknn.dev/data/15"
+
 
 function POST_door() {
     let text = document.getElementById('Text_input').value
-    var data = {door: false}
+    var data = {"value": "close"}
     fetch(url + "/door", {
-        method: 'POST',
+        method: 'PUT',
         body: JSON.stringify(data),
         headers:{
         'Content-Type': 'application/json'}
-    })
+    }).then((res) => res.json())
+    .then((data) => console.log(data))
+    .then((err) => console.log(err))
 }
 
 function POST_buzzer() {
   let text = document.getElementById('Text_input').value
-  var data = {buzzer: false}
+  var data = {"value": "off"}
   fetch(url + "/buzzer", {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify(data),
       headers:{
       'Content-Type': 'application/json'}
-  })
+  }).then((res) => res.json())
+  .then((data) => console.log(data))
+  .then((err) => console.log(err))
+}
+
+function POST_light() {
+  let text = document.getElementById('Text_input').value
+  var data = {"value": "off"}
+  fetch(url + "/light", {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers:{
+      'Content-Type': 'application/json'}
+  }).then((res) => res.json())
+  .then((data) => console.log(data))
+  .then((err) => console.log(err))
+}
+
+function POST_reset() {
+  let text = document.getElementById('Text_input').value
+  fetch(url , {
+      method: 'POST',
+      body: JSON.stringify({ "data" :{
+        "door": "open",
+        "buzzer": "off",
+        "light" : "on"}
+  }),
+      headers:{
+      'Content-Type': 'application/json'}
+  }).then((res) => res.json())
+  .then((data) => console.log(data))
+  .then((err) => console.log(err))
 }
 
 let lasttext = ''
