@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="jail_style.css">
+    </head>
+    <style>
+        body{
+            background-color: rgb(153, 0, 0);
+        }  
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 450px;
+            margin-top: -140px;
+            
+        }
+        .switch2 {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 450px;
+            margin-top: -60px;
+        }
+        .switch3 {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-left: 450px;
+            margin-top: -70px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        .box{
+    background-color: black;
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+    margin: 30px auto;
+    border: 1px solid whitesmoke;
+}
+.title{
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 50px;
+}
+.status{
+    color: white;
+    margin-left: 250px;
+    margin-top: 20px;
+}
+.door{
+    color: white;
+    font-size: 30px;
+    margin: 100px ;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+.buzzer{
+    color: white;
+    font-size: 30px;
+    margin-top: 80px ;
+    margin-left: 50px;
+}
+.light{
+    color: white;
+    font-size: 30px;
+    margin-top: 10px ;
+    margin-left: 50px;
+}
+    </style>
+    <body>
+        <script src="script.js"></script>
+        <h1 class='title' >Jail system<style></style> </h1>
+        <div class='box' >
+            <h2 class='status'>status</h2>
+            <p class='door'>Door</p> 
+            <label class="switch">
+                <input type="checkbox" onchange="POST_ door()">
+                <span class="slider round" onchange="POST_door()"></span>
+            </label>
+            <!-- <p class='statusbox'></p> -->
+            <p class='light'>Light</p>
+            
+            <label class="switch2">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <!-- <p class='statusbox2'></p> -->
+            <p class='buzzer'>Buzzer</p>
+            <label class="switch3">
+                <input type="checkbox">
+                <span class="slider round" onchange="POST_buzzer()"></span>
+            </label>
+            <!-- <p class='statusbox'></p> -->
+        </div>
+
+    </body>
+</html>
