@@ -3,11 +3,8 @@ prison_data = {}
 
 function POST_door() {
     let text = document.getElementById('Text_input').value
-    if (prison_data['door'] == "close") {
-      var value = "open"
-    } else {
-      var value = "close"
-    }
+    let swap = {"close":"open", "open":"close"}
+    var value = swap[prison_data['door']]
     var data = {"value": value}
     fetch(url + "/door", {
         method: 'PUT',
@@ -21,11 +18,8 @@ function POST_door() {
 
 function POST_buzzer() {
   let text = document.getElementById('Text_input').value
-  if (prison_data['buzzer'] == "off") {
-    var value = "on"
-  } else {
-    var value = "off"
-  }
+  let swap = {"off":"on", "on":"off"}
+  let value = swap[prison_data['buzzer']]
   var data = {"value": value}
   fetch(url + "/buzzer", {
       method: 'PUT',
@@ -39,11 +33,8 @@ function POST_buzzer() {
 
 function POST_light() {
   let text = document.getElementById('Text_input').value
-  if (prison_data['light'] == "off") {
-    var value = "on"
-  } else {
-    var value = "off"
-  }
+  let swap = {"off":"on","on":"off"}
+  var value = swap[prison_data['light']]
   var data = {"value": value}
   fetch(url + "/light", {
       method: 'PUT',
