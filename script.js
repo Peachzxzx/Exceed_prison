@@ -1,9 +1,14 @@
 const url = "https://exceed.superposition.pknn.dev/data/15"
-
+prison_data = {}
 
 function POST_door() {
     let text = document.getElementById('Text_input').value
-    var data = {"value": "close"}
+    if (prison_data['door'] == "close") {
+      var value = "open"
+    } else {
+      var value = "close"
+    }
+    var data = {"value": value}
     fetch(url + "/door", {
         method: 'PUT',
         body: JSON.stringify(data),
@@ -16,7 +21,12 @@ function POST_door() {
 
 function POST_buzzer() {
   let text = document.getElementById('Text_input').value
-  var data = {"value": "off"}
+  if (prison_data['buzzer'] == "off") {
+    var value = "on"
+  } else {
+    var value = "off"
+  }
+  var data = {"value": value}
   fetch(url + "/buzzer", {
       method: 'PUT',
       body: JSON.stringify(data),
@@ -29,7 +39,12 @@ function POST_buzzer() {
 
 function POST_light() {
   let text = document.getElementById('Text_input').value
-  var data = {"value": "off"}
+  if (prison_data['light'] == "off") {
+    var value = "on"
+  } else {
+    var value = "off"
+  }
+  var data = {"value": value}
   fetch(url + "/light", {
       method: 'PUT',
       body: JSON.stringify(data),
@@ -47,7 +62,7 @@ function POST_reset() {
       body: JSON.stringify({ "data" :{
         "door": "open",
         "buzzer": "off",
-        "light" : "on"}
+        "light" : "off"}
   }),
       headers:{
       'Content-Type': 'application/json'}
@@ -68,7 +83,7 @@ setInterval(function () {
     if (lasttext != text){
     document.getElementById('main').innerHTML += `<h3>${text}</h3>`
     lasttext = text
-
+    prison_data = myJson
 }
   });
 },1000)
